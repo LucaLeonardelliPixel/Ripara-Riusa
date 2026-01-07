@@ -147,40 +147,70 @@ export type AllDocumentTypes = HomepageDocument;
  */
 export interface BendoSliceDefaultPrimaryItemsItem {
   /**
-   * Image field in *Bendo → Default → Primary → Items*
+   * Process Image field in *Bendo → Default → Primary → Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: bendo.default.primary.items[].image
+   * - **API ID Path**: bendo.default.primary.items[].process_image
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
-  image: prismic.ImageField<never>;
+  process_image: prismic.ImageField<never>;
 
   /**
-   * Caption field in *Bendo → Default → Primary → Items*
+   * Step Title field in *Bendo → Default → Primary → Items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: bendo.default.primary.items[].caption
+   * - **API ID Path**: bendo.default.primary.items[].step_title
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  caption: prismic.KeyTextField;
+  step_title: prismic.KeyTextField;
 
   /**
-   * Position_y field in *Bendo → Default → Primary → Items*
+   * Step Description field in *Bendo → Default → Primary → Items*
    *
-   * - **Field Type**: Number
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: bendo.default.primary.items[].position_y
-   * - **Documentation**: https://prismic.io/docs/fields/number
+   * - **API ID Path**: bendo.default.primary.items[].step_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  position_y: prismic.NumberField;
+  step_description: prismic.RichTextField;
+
+  /**
+   * Layout field in *Bendo → Default → Primary → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bendo.default.primary.items[].layout
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  layout: prismic.SelectField<"vertical" | "horizontal" | "square">;
 }
 
 /**
  * Primary content in *Bendo → Default → Primary*
  */
 export interface BendoSliceDefaultPrimary {
+  /**
+   * Title field in *Bendo → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bendo.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *Bendo → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bendo.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
   /**
    * Items field in *Bendo → Default → Primary*
    *
@@ -190,16 +220,6 @@ export interface BendoSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   items: prismic.GroupField<Simplify<BendoSliceDefaultPrimaryItemsItem>>;
-
-  /**
-   * Title field in *Bendo → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: bendo.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  title: prismic.RichTextField;
 }
 
 /**

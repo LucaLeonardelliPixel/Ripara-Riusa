@@ -3,6 +3,22 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "beside",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cupidatat aliquip ut Lorem dolore aliqua aliquip laborum dolor."
+						}
+					}
+				]
+			},
 			"items": {
 				"__TYPE__": "GroupContentType",
 				"value": [
@@ -10,17 +26,17 @@
 						"__TYPE__": "GroupItemContent",
 						"value": [
 							[
-								"image",
+								"process_image",
 								{
 									"origin": {
 										"id": "main",
-										"url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
-										"width": 4172,
-										"height": 4000
+										"url": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+										"width": 4076,
+										"height": 2712
 									},
-									"url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
-									"width": 4172,
-									"height": 4000,
+									"url": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+									"width": 4076,
+									"height": 2712,
 									"edit": {
 										"zoom": 1,
 										"crop": {
@@ -29,40 +45,43 @@
 										},
 										"background": "transparent"
 									},
-									"alt": "warm",
+									"alt": "gently",
 									"credits": null,
 									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
 							],
 							[
-								"caption",
+								"step_title",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "source",
+									"value": "scared",
 									"type": "Text"
 								}
 							],
 							[
-								"position_y",
+								"step_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Esse tempor officia labore qui et consectetur nisi occaecat. Et laborum est fugiat est eiusmod aute laboris ullamco. Id anim culpa anim ipsum."
+											}
+										}
+									]
+								}
+							],
+							[
+								"layout",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "68",
-									"type": "Number"
+									"value": "horizontal",
+									"type": "Select"
 								}
 							]
 						]
-					}
-				]
-			},
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Nulla anim minim dolor labore."
-						}
 					}
 				]
 			}

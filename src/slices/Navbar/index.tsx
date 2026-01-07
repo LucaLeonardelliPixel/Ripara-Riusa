@@ -16,6 +16,7 @@ const Navbar: FC<NavbarProps> = ({ slice }) => {
       ([entry]) => setIsOverLightSection(entry.isIntersecting),
       { threshold: 0, rootMargin: "-80px 0px -90% 0px" }
     );
+    // Assicurati che la tua sezione "Bendo" o quella chiara abbia id="showoff-section"
     const section = document.getElementById("showoff-section");
     if (section) observer.observe(section);
     return () => { if (section) observer.unobserve(section); };
@@ -26,16 +27,14 @@ const Navbar: FC<NavbarProps> = ({ slice }) => {
       <div 
         className={`transition-all duration-500 rounded-full backdrop-blur-md border flex items-center 
         ${isOverLightSection ? "bg-[#EAA79C]/40 border-[#EAA79C]/20" : "bg-[#fce7f3]/20 border-white/10"}
-        /* MOBILE: Larghezza minima basata sul logo */
         w-auto px-6 py-2 
-        /* DESKTOP: Torna a una larghezza definita e spaziosa */
         md:w-full md:max-w-7xl md:justify-between md:px-8 md:py-3`}
       >
         
         {/* Placeholder per centratura Desktop */}
         <div className="hidden md:block md:flex-1"></div>
 
-        {/* LOGO: Il contenitore non ha più flex-1 su mobile, così non spinge */}
+        {/* LOGO */}
         <div className="flex justify-center">
           <div className="h-6 md:h-10 w-auto max-w-[120px] md:max-w-none">
             <PrismicNextImage 
@@ -45,16 +44,19 @@ const Navbar: FC<NavbarProps> = ({ slice }) => {
           </div>
         </div>
 
-        {/* CONTATTACI: Completamente rimosso su mobile (hidden) */}
+        {/* CONTATTACI: Ora è un link che punta al footer */}
         <div className="hidden md:flex md:flex-1 justify-end items-center">
-          <div className="group flex items-center gap-3 cursor-pointer">
+          <a 
+            href="#footer" 
+            className="group flex items-center gap-3 cursor-pointer outline-none"
+          >
             <span className="font-unbounded font-medium text-sm tracking-[0.2em] text-white">
               {slice.primary.button_label}
             </span>
             <div className="text-white group-hover:scale-110 transition-all duration-300">
               <MessageCircle size={20} strokeWidth={1.5} />
             </div>
-          </div>
+          </a>
         </div>
 
       </div>

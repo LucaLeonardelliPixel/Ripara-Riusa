@@ -14,7 +14,7 @@ export type FooterProps = SliceComponentProps<Content.FooterSlice>;
  */
 const Footer: FC<FooterProps> = ({ slice }) => {
   return (
-    <section
+    <section id="footer"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="bg-[#F9F4F0] pt-24 pb-12 px-6 font-unbounded border-t border-[#EAA79C]/20"

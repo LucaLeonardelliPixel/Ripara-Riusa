@@ -12,44 +12,65 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
         "items": {
           "type": "Group",
           "config": {
             "label": "Items",
             "repeat": true,
             "fields": {
-              "image": {
+              "process_image": {
                 "type": "Image",
                 "config": {
-                  "label": "Image",
+                  "label": "Process Image",
                   "constraint": {},
                   "thumbnails": []
                 }
               },
-              "caption": {
+              "step_title": {
                 "type": "Text",
                 "config": {
-                  "label": "Caption",
+                  "label": "Step Title",
                   "placeholder": ""
                 }
               },
-              "position_y": {
-                "type": "Number",
+              "step_description": {
+                "type": "StructuredText",
                 "config": {
-                  "label": "Position_y",
-                  "placeholder": ""
+                  "label": "Step Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "layout": {
+                "type": "Select",
+                "config": {
+                  "label": "Layout",
+                  "placeholder": "",
+                  "options": [
+                    "vertical",
+                    "horizontal",
+                    "square"
+                  ]
                 }
               }
             }
-          }
-        },
-        "title": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Title",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
       },
