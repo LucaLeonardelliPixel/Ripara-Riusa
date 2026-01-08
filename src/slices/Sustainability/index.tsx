@@ -73,6 +73,9 @@ const Sustainability: FC<SustainabilityProps> = ({ slice }) => {
 
         {/* Testo che entra da destra */}
         <div ref={textRef} className="text-white">
+          <span className="hero-text-item font-unbounded font-medium text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/70 mb-4 inline-block">
+            sustainable
+          </span>
           <div className="text-3xl md:text-6xl font-bold tracking-tight mb-6">
             <h1 className="uppercase flex flex-wrap items-baseline gap-x-3">
               <ShinyText 

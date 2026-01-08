@@ -16,8 +16,6 @@ export type BendoProps = SliceComponentProps<Content.BendoSlice>;
 const Bendo: FC<BendoProps> = ({ slice }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  // Path corretto basato sulla tua configurazione Prismic
   const items = (slice.primary.items || []) as any[];
 
   useEffect(() => {
@@ -25,12 +23,11 @@ const Bendo: FC<BendoProps> = ({ slice }) => {
 
     const ctx = gsap.context(() => {
       const itemsElements = gsap.utils.toArray<HTMLElement>(".process-item");
-      
       itemsElements.forEach((item, i) => {
         ScrollTrigger.create({
           trigger: item,
-          start: "top center",
-          end: "bottom center",
+          start: "20% center", 
+          end: "80% center",
           onEnter: () => setActiveIndex(i),
           onEnterBack: () => setActiveIndex(i),
         });
@@ -45,41 +42,54 @@ const Bendo: FC<BendoProps> = ({ slice }) => {
   return (
     <section 
       ref={containerRef}
-      className="relative bg-[#EAA79C] py-24 md:py-40 font-unbounded"
+      className="relative py-24 md:py-40 font-unbounded"
+      style={{ backgroundColor: "#EAA79C" }}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <span className="hero-text-item font-unbounded font-medium text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/70 mb-4 inline-block">
+          Our method
+        </span>
         
-        {/* Header Sezione */}
-        <div className="mb-24 max-w-3xl">
-          <h2 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
+        <div className="mb-24 max-w-3xl text-white">
+          <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight">
             {slice.primary.title}
           </h2>
-          <div className="text-lg text-white/80 font-light leading-relaxed">
+          <div className="text-lg font-light leading-relaxed opacity-80">
             <PrismicRichText field={slice.primary.description} />
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row gap-16 md:gap-24">
-          
-          {/* LATO SINISTRO: Testo */}
-          <div className="flex-1 space-y-32 md:space-y-64 pb-[50vh]">
+          <div className="flex-1 space-y-32 md:space-y-64 pb-[12vh] pt-[7vh]">
             {items.map((item, index) => (
               <div 
                 key={index} 
-                className={`process-item transition-opacity duration-500 ${
-                  activeIndex === index ? "opacity-100" : "opacity-20"
-                }`}
+                className="process-item relative"
               >
-                <div className="flex items-start gap-6">
-                  <span className="text-2xl md:text-3xl font-black text-white">
-                    0{index + 1}
+                {/* NUMERO GIGANTE - Posizionato in modo da non interferire con lo scroll */}
+                <div className="absolute inset-0 pointer-events-none z-0">
+                  <span 
+                    className={`absolute -left-12 md:-left-28 top-1/2 -translate-y-1/2 text-8xl md:text-[15rem] font-black transition-all duration-1000 ease-in-out text-white
+                    ${activeIndex === index ? "opacity-60 scale-100" : "opacity-0 scale-90"}`}
+                  >
+                    {index + 1}
                   </span>
-                  <div>
-                    <h3 className="text-2xl md:text-4xl font-black text-white mb-6">
-                      {item.step_title}
-                    </h3>
-                    <div className="text-base md:text-lg text-white/70 leading-relaxed font-light">
-                      <PrismicRichText field={item.step_description} />
+                </div>
+
+                <div className={`relative z-10 transition-all duration-700 ease-in-out text-white p-8 md:p-12 rounded-[2.5rem] border border-white/10 ${
+                  activeIndex === index 
+                    ? "opacity-100 translate-x-4 bg-white/10 backdrop-blur-xl shadow-2xl" 
+                    : "opacity-20 translate-x-0"
+                }`}>
+                  <div className="flex items-start gap-6">
+                    {/* Rimosso il numero piccolo interno */}
+                    <div>
+                      <h3 className="text-2xl md:text-4xl font-black mb-6">
+                        {item.step_title}
+                      </h3>
+                      <div className="text-base md:text-lg leading-relaxed font-light opacity-80">
+                        <PrismicRichText field={item.step_description} />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -87,7 +97,6 @@ const Bendo: FC<BendoProps> = ({ slice }) => {
             ))}
           </div>
 
-          {/* LATO DESTRO: Immagine Sticky Quadrata */}
           <div className="hidden md:block flex-1">
             <div className="sticky top-1/4 w-full aspect-square rounded-[3rem] overflow-hidden shadow-2xl bg-white/10 border border-white/20">
               {items.map((item, index) => (
@@ -103,12 +112,10 @@ const Bendo: FC<BendoProps> = ({ slice }) => {
                     className="object-cover"
                     alt=""
                   />
-                  <div className="absolute inset-0 bg-black/10" />
                 </div>
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>

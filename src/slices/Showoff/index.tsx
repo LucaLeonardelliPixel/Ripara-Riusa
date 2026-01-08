@@ -1,18 +1,17 @@
 "use client";
 
-import { FC, useCallback, useEffect, useState } from "react"; // Aggiunti useState e useEffect
+import { FC, useCallback, useEffect, useState } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export type ShowoggProps = SliceComponentProps<Content.ShowoggSlice>;
 
 const Showogg: FC<ShowoggProps> = ({ slice }) => {
-  const [selectedIndex, setSelectedIndex] = useState(0); // Gestisce il pallino acceso
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const autoplayOptions = {
     delay: 3000,
@@ -25,7 +24,6 @@ const Showogg: FC<ShowoggProps> = ({ slice }) => {
     [Autoplay(autoplayOptions)] 
   );
 
-  // Funzione per capire quale foto è attiva
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setSelectedIndex(emblaApi.selectedScrollSnap());
@@ -53,13 +51,12 @@ const Showogg: FC<ShowoggProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      {/* 1. Background Image Layer */}
+      {/* 1. Background Layer */}
       <div className="absolute inset-0 z-0">
-        {/* Overlay opzionale per migliorare la leggibilità */}
         <div className="absolute inset-0 bg-[#F9F4F0]/20" />
       </div>
 
-      {/* 2. Content Layer (z-10 per stare sopra lo sfondo) */}
+      {/* 2. Content Layer */}
       <div className="relative z-10">
         {/* Titolo Sezione */}
         <div className="max-w-6xl mx-auto mb-10 md:mb-16">
@@ -76,8 +73,8 @@ const Showogg: FC<ShowoggProps> = ({ slice }) => {
                 <div key={index} className="flex-[0_0_100%] min-w-0 px-4 md:px-10">
                   <div className="flex flex-col items-center">
                     
-                    {/* Immagine Centrale */}
-                    <div className="w-full aspect-[4/5] md:aspect-square max-w-md bg-white rounded-3xl overflow-hidden shadow-2xl mb-10">
+                    {/* Immagine Centrale Arrotondata */}
+                    <div className="w-full aspect-[4/5] md:aspect-square max-w-md bg-white rounded-[3.5rem] overflow-hidden shadow-2xl mb-10 border border-[#EAA79C]/10">
                       <PrismicNextImage 
                         field={item.image} 
                         className="w-full h-full object-cover"
@@ -121,7 +118,7 @@ const Showogg: FC<ShowoggProps> = ({ slice }) => {
           </button>
         </div>
 
-        {/* Indicatori (Dots) MODIFICATI SOLO QUESTI */}
+        {/* Indicatori (Dots) */}
         <div className="flex justify-center gap-3 mt-14">
           {(slice.primary.items ?? []).map((_, i) => (
             <div 
