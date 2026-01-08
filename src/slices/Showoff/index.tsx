@@ -60,7 +60,7 @@ const Showogg: FC<ShowoggProps> = ({ slice }) => {
       <div className="relative z-10">
         {/* Titolo Sezione */}
         <div className="max-w-6xl mx-auto mb-10 md:mb-16">
-          <div className="text-4xl text-center md:text-7xl font-black text-[#EAA79C]">
+          <div className="text-5xl text-center md:text-7xl font-black text-[#EAA79C]">
             <PrismicRichText field={slice.primary.title} />
           </div> 
         </div>
@@ -73,8 +73,8 @@ const Showogg: FC<ShowoggProps> = ({ slice }) => {
                 <div key={index} className="flex-[0_0_100%] min-w-0 px-4 md:px-10">
                   <div className="flex flex-col items-center">
                     
-                    {/* Immagine Centrale Arrotondata */}
-                    <div className="w-full aspect-[4/5] md:aspect-square max-w-md bg-white rounded-[3.5rem] overflow-hidden shadow-2xl mb-10 border border-[#EAA79C]/10">
+                    {/* Immagine Centrale Arrotondata - Senza ombra */}
+                    <div className="w-full aspect-[4/5] md:aspect-square max-w-md bg-white rounded-[3.5rem] overflow-hidden mb-10 border border-[#EAA79C]/10">
                       <PrismicNextImage 
                         field={item.image} 
                         className="w-full h-full object-cover"
@@ -88,11 +88,9 @@ const Showogg: FC<ShowoggProps> = ({ slice }) => {
                         {item.description}
                       </div>
                       
-                      <div className="flex flex-wrap justify-center gap-4 text-sm font-bold uppercase tracking-wider">
-                        <span className="bg-[#EAA79C] text-white px-8 py-3 rounded-full shadow-sm">
-                          {item.price}€
-                        </span>
-                        <span className="border-2 border-[#EAA79C] text-[#EAA79C] px-8 py-3 rounded-full bg-white/50 backdrop-blur-sm">
+                      <div className="flex justify-center text-sm font-bold uppercase tracking-wider">
+                        {/* Solo Materiali */}
+                        <span className="border-2 border-[#EAA79C] text-[#EAA79C] px-10 py-3 rounded-full bg-white/50 backdrop-blur-sm">
                           {item.materials}
                         </span>
                       </div>

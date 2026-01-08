@@ -50,10 +50,12 @@ const Bendo: FC<BendoProps> = ({ slice }) => {
           Our method
         </span>
         
-        <div className="mb-24 max-w-3xl text-white">
+        <div className="max-w-5xl text-white">
           <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight">
             {slice.primary.title}
           </h2>
+        </div>
+        <div className="mb-24 max-w-3xl text-white">
           <div className="text-lg font-light leading-relaxed opacity-80">
             <PrismicRichText field={slice.primary.description} />
           </div>

@@ -16,11 +16,18 @@ const Navbar: FC<NavbarProps> = ({ slice }) => {
       ([entry]) => setIsOverLightSection(entry.isIntersecting),
       { threshold: 0, rootMargin: "-80px 0px -90% 0px" }
     );
-    // Assicurati che la tua sezione "Bendo" o quella chiara abbia id="showoff-section"
     const section = document.getElementById("showoff-section");
     if (section) observer.observe(section);
     return () => { if (section) observer.unobserve(section); };
   }, []);
+
+  // Funzione per tornare su in modo smooth
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 px-4 py-4 md:px-12 md:py-6 flex justify-center">
@@ -34,9 +41,12 @@ const Navbar: FC<NavbarProps> = ({ slice }) => {
         {/* Placeholder per centratura Desktop */}
         <div className="hidden md:block md:flex-1"></div>
 
-        {/* LOGO */}
+        {/* LOGO: Cliccabile per tornare su */}
         <div className="flex justify-center">
-          <div className="h-6 md:h-10 w-auto max-w-[120px] md:max-w-none">
+          <div 
+            onClick={scrollToTop}
+            className="h-6 md:h-10 w-auto max-w-[120px] md:max-w-none cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-300"
+          >
             <PrismicNextImage 
               field={slice.primary.logo} 
               className="h-full w-auto object-contain" 
@@ -44,7 +54,7 @@ const Navbar: FC<NavbarProps> = ({ slice }) => {
           </div>
         </div>
 
-        {/* CONTATTACI: Ora è un link che punta al footer */}
+        {/* CONTATTACI: Link al footer */}
         <div className="hidden md:flex md:flex-1 justify-end items-center">
           <a 
             href="#footer" 
