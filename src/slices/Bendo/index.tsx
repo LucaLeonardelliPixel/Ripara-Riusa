@@ -45,6 +45,7 @@ const Bendo: FC<BendoProps> = ({ slice }) => {
       className="relative py-24 md:py-40 font-unbounded"
       style={{ backgroundColor: "#EAA79C" }}
     >
+
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <span className="hero-text-item font-unbounded font-medium text-[10px] md:text-xs uppercase tracking-[0.2em] text-white/70 mb-4 inline-block">
           Our method

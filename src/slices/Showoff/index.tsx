@@ -5,6 +5,7 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import useEmblaCarousel from 'embla-carousel-react';
+import StitchingShowoff from "./StitchingShowoff";
 import Autoplay from 'embla-carousel-autoplay';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -51,6 +52,9 @@ const Showogg: FC<ShowoggProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
+
+      <StitchingShowoff />
+      
       {/* 1. Background Layer */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[#F9F4F0]/20" />
